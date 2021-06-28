@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+import argparse
+
+from arxiv_downloader.utils import check_out_dir, download, url_to_id
+
+def parse_args():
+    # Parse arguments
+    parser = argparse.ArgumentParser(description="ArXiv Paper Downloader.")
+    parser.add_argument("--url", "-u", type=str, default=None, help="ArXiv article URL.")
+    parser.add_argument("--id", "-i", type=str, default=None, help="ArXiv article ID (for https://arxiv.org/abs/2004.13316 this would be 2004.13316).")
+    parser.add_argument(
+        "--directory", "-d", default="./", type=str, help="Output directory."
+    )
+    parser.add_argument(
+        "--source",
+        "-s",
+        default=False,
+        action="store_true",
+        help="Whether to download the source tar file.",
+    )
+    return parser.parse_args()
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    # xor between url and id
+    assert (args.url is not None) ^ (args.id is not None), "Either URL or ID must be given but not both."
+
+    # Get ID
+    if args.id is None:
+        article_id = url_to_id(args.url)
+    else:
+        article_id = args.id
+
+    # Download article
+    download(article_id, args.directory, source=args.source)
