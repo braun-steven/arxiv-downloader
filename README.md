@@ -1,5 +1,9 @@
 # arxiv-downloader: The ArXiv PDF Command Line Interface Downloader
 
+![](https://img.shields.io/pypi/v/arxiv-downloader)
+![](https://img.shields.io/pypi/pyversions/arxiv-downloader)
+
+
 ## Installation
 
 Arxiv-downloader is available via PyPi:
