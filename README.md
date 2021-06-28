@@ -8,6 +8,29 @@ Arxiv-downloader is available via PyPi:
 pip install arxiv-downloader
 ```
 
+## Examples
+
+Download PDF from URL:
+``` sh
+arxiv-downloader --url https://arxiv.org/pdf/2101.05084.pdf
+```
+
+Download PDF from ID:
+``` sh
+arxiv-downloader --id 2101.05084
+```
+
+Download PDF into existing directory:
+``` sh
+arxiv-downloader --url https://arxiv.org/pdf/2101.05084.pdf --directory ./pdfs
+```
+
+Download PDF and source files (as `.tar.gz` archive):
+``` sh
+arxiv-downloader --url https://arxiv.org/pdf/2101.05084.pdf --source
+```
+
+
 ## Usage
 
 ``` sh
