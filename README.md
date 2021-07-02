@@ -3,6 +3,8 @@
 ![](https://img.shields.io/pypi/v/arxiv-downloader)
 ![](https://img.shields.io/pypi/pyversions/arxiv-downloader)
 
+![](./featured.png)
+
 
 ## Installation
 
