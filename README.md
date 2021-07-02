@@ -1,4 +1,4 @@
-# arxiv-downloader: The ArXiv PDF Command Line Interface Downloader
+# arxiv-downloader: The ArXiv PDF Command-Line Interface Downloader
 
 ![](https://img.shields.io/pypi/v/arxiv-downloader)
 ![](https://img.shields.io/pypi/pyversions/arxiv-downloader)
