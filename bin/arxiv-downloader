@@ -5,9 +5,9 @@ from arxiv_downloader.utils import check_out_dir, download, url_to_id
 
 def parse_args():
     # Parse arguments
-    parser = argparse.ArgumentParser(description="ArXiv Paper Downloader.")
-    parser.add_argument("--url", "-u", type=str, default=None, help="ArXiv article URL.")
-    parser.add_argument("--id", "-i", type=str, default=None, help="ArXiv article ID (for https://arxiv.org/abs/2004.13316 this would be 2004.13316).")
+    parser = argparse.ArgumentParser(description="arXiv Paper Downloader.")
+    parser.add_argument("--url", "-u", type=str, default=None, help="arXiv article URL.")
+    parser.add_argument("--id", "-i", type=str, default=None, help="arXiv article ID (for https://arxiv.org/abs/2004.13316 this would be 2004.13316).")
     parser.add_argument(
         "--directory", "-d", default="./", type=str, help="Output directory."
     )
