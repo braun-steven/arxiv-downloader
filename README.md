@@ -10,10 +10,18 @@
 
 ## Installation
 
-arxiv-downloader is available via PyPi:
+`arxiv-downloader` is available via PyPi:
 
 ``` sh
 pip install arxiv-downloader
+```
+
+### Arch User Repository
+
+We also provide an AUR package:
+
+``` sh
+paru -S arxiv-downloader
 ```
 
 ## Examples
