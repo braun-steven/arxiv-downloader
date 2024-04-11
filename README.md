@@ -3,7 +3,7 @@
 ![](https://img.shields.io/pypi/v/arxiv-downloader)
 ![](https://img.shields.io/pypi/pyversions/arxiv-downloader)
 
-![](./featured.png)
+![](./featured.svg)
 
 
 ## Installation
@@ -16,43 +16,47 @@ pip install arxiv-downloader
 
 ## Examples
 
-Download PDF from URL:
+Download a PDF using a URL:
 ``` sh
-arxiv-downloader --url https://arxiv.org/pdf/2101.05084.pdf
+arxiv-downloader https://arxiv.org/pdf/2302.06544.pdf
 ```
 
-Download PDF from ID:
+Download a PDF using an ID:
 ``` sh
-arxiv-downloader --id 2101.05084
+arxiv-downloader 2302.06544
 ```
 
-Download PDF into existing directory:
+Download a PDF into a directory:
 ``` sh
-arxiv-downloader --url https://arxiv.org/pdf/2101.05084.pdf --directory ./pdfs
+arxiv-downloader https://arxiv.org/pdf/2302.06544.pdf -d ./pdfs
 ```
 
-Download PDF and source files (as `.tar.gz` archive):
+Download a PDF and its source files (as `.tar.gz` archive):
 ``` sh
-arxiv-downloader --url https://arxiv.org/pdf/2101.05084.pdf --source
+arxiv-downloader https://arxiv.org/pdf/2302.06544.pdf -s
 ```
-
 
 ## Usage
 
+To see all available options, use the help command:
+
 ``` sh
-> arxiv-downloader -h
-
-usage: arxiv-downloader [-h] [--url URL] [--id ID] [--directory DIRECTORY] [--source]
-
-arXiv Paper Downloader.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --url URL, -u URL     arXiv article URL.
-  --id ID, -i ID        arXiv article ID (for https://arxiv.org/abs/2004.13316 this would be
-                        2004.13316).
-  --directory DIRECTORY, -d DIRECTORY
-                        Output directory.
-  --source, -s          Whether to download the source tar file.
+arxiv-downloader -h
 ```
 
+This will display usage information similar to the following:
+
+```plaintext
+usage: arxiv-downloader [-h] [-d DIRECTORY] [-s] [url_or_id]
+
+Download articles from arXiv.
+
+positional arguments:
+  url_or_id             The URL or ID of the arXiv article. (default: None)
+
+options:
+  -h, --help            show this help message and exit
+  -d DIRECTORY, --directory DIRECTORY
+                        The directory where the article will be downloaded. (default: ./)
+  -s, --source          Also download the source files of the article. (default: False)
+```
