@@ -1,7 +1,9 @@
 # arxiv-downloader: The arXiv PDF Command-Line Interface Downloader
 
 ![](https://img.shields.io/pypi/v/arxiv-downloader)
-![](https://img.shields.io/pypi/pyversions/arxiv-downloader)
+![Python Version](https://img.shields.io/badge/python-3.9%20|%203.10%20|%203.11%20|%203.12-blue)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![AUR](https://img.shields.io/aur/version/arxiv-downloader)
 
 ![](./featured.svg)
 
