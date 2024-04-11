@@ -44,25 +44,15 @@ def setup_argument_parser():
     return args
 
 
-def is_url(input_string):
-    """
-    Determines if the input string is a URL.
-
-    Returns:
-    True if the string is a URL, False otherwise.
-    """
-    return bool(re.match(r"https?://(?:www\.)?arxiv\.org/(abs|pdf)/\d+\.\d+(v\d+)?(\.pdf)?$", input_string))
-
-
 def parse_id(input_string):
     """
     Extracts the arXiv ID from a given input string, which can be either an arXiv ID or a URL.
 
-    Parameters:
-    - input_string: The input string that is either an arXiv ID or a URL.
+    Args:
+        input_string: The input string that is either an arXiv ID or a URL.
 
     Returns:
-    The extracted arXiv ID if the input is valid, otherwise None.
+        The extracted arXiv ID if the input is valid, otherwise None.
     """
     # Pattern to match a direct arXiv ID
     id_pattern = re.compile(r"\d{4}\.\d{4,5}(v\d+)?$")
@@ -79,14 +69,18 @@ def parse_id(input_string):
     print("Error: The provided input does not match the expected URL or ID format.")
     exit(1)
 
-def main():
-    args = setup_argument_parser()
 
-    # Determine if input is a URL or ID
-    article_id = parse_id(args.url_or_id)
+def download_article(article_id, directory, download_source=False):
+    """
+    Downloads the article with the given ID from arXiv and saves it to the specified directory.
 
+    Args:
+        article_id: The arXiv ID of the article to download.
+        directory: The directory where the article will be saved.
+        download_source: Whether to download the source files of the article.
+    """
     # Proceed with the download
-    directory = args.directory
+    directory = directory
     os.makedirs(directory, exist_ok=True)
     search_result = arxiv.Client().results(arxiv.Search(id_list=[article_id]))
 
@@ -95,11 +89,21 @@ def main():
         pdf_path = article.download_pdf(dirpath=directory)
         print(f"Download finished! Result saved at:\n{pdf_path}")
 
-        if args.source:
+        if download_source:
             print(f'Starting download of article source files: "{article.title}" ({article_id})')
             article.download_source(dirpath=directory)
     else:
         print("Article not found.")
+
+
+def main():
+    args = setup_argument_parser()
+
+    # Determine if input is a URL or ID
+    article_id = parse_id(args.url_or_id)
+
+    # Download the article
+    download_article(article_id, directory=args.directory, download_source=args.source)
 
 
 if __name__ == "__main__":
